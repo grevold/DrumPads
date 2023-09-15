@@ -11,12 +11,12 @@ export function Pad({ sound, color }: Props) {
     src: [`${process.env.PUBLIC_URL}/Samples/${sound}`],
   });
   return (
-    <div
+    <button
       className={s.root}
       style={{ backgroundColor: color }}
       onTouchStart={() => {
         sample.play();
       }}
-    ></div>
+    ></button>
   );
 }
