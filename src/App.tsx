@@ -19,11 +19,11 @@ function App() {
     const handleClick = () => {
       sample.current.play();
     };
-    window.addEventListener("", handleClick);
+    window.addEventListener("touchstart", handleClick);
     return () => window.removeEventListener("touchstart", handleClick);
   }, []);
 
-  return <h1>Hello, world!!!</h1>;
+  return <h1>Stieve Rambo</h1>;
 
   // return (
   //   <div className={s.root}>
