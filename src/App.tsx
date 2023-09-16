@@ -2,12 +2,20 @@
 import { useEffect, useRef } from "react";
 // import { texts } from "./Texts";
 import { Howl } from "howler";
+// @ts-ignore: Unreachable code error
+import initReactFastclick from "react-fastclick";
 
 // import s from "./index.module.css";
 
 function App() {
   // const arrayOfPads = texts.Main.pads;
   // console.log("render");
+
+  useEffect(() => {
+    // console.log(attachFastClick)
+
+    initReactFastclick();
+  }, []);
 
   const sample = useRef(
     new Howl({
