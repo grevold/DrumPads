@@ -1,8 +1,9 @@
 // import { Pad } from "./components/Pad/Pad";
 import { useEffect, useRef } from "react";
 // import { texts } from "./Texts";
+import { Howl } from "howler";
 
-import s from "./index.module.css";
+// import s from "./index.module.css";
 
 function App() {
   // const arrayOfPads = texts.Main.pads;
@@ -18,11 +19,11 @@ function App() {
     const handleClick = () => {
       sample.current.play();
     };
-    window.addEventListener("touchstart", handleClick);
+    window.addEventListener("", handleClick);
     return () => window.removeEventListener("touchstart", handleClick);
   }, []);
 
-  return <h1>Hello, world!</h1>;
+  return <h1>Hello, world!!!</h1>;
 
   // return (
   //   <div className={s.root}>
