@@ -1,42 +1,49 @@
 import { useEffect, useRef, useCallback } from "react";
 import * as Tone from "tone";
-import { Sampler } from "tone";
+import { Player } from "tone";
 
 import s from "./Pad.module.css";
 
 interface Props {
   sound: string;
   color: string;
+  soundPack: string;
+  bank: string;
+  isPingPongMode?: boolean;
 }
 
-export function Pad({ sound, color }: Props) {
-  // const sample = new Howl({
-  //   src: [`${process.env.PUBLIC_URL}/Samples/${sound}`],
-  // });
-  const playerRef = useRef<Tone.Sampler>();
+const pingPong = new Tone.PingPongDelay("4n", 0.5).toDestination();
 
+export function Pad({ sound, color, isPingPongMode, soundPack, bank }: Props) {
+  const playerRef = useRef<Tone.Player>();
   const handleClick = useCallback(() => {
     const player = playerRef.current;
-    if (player?.loaded) {
-      player.triggerAttack("C4");
-    } else {
-      console.log("Звук ещё не загрузился!");
+    if (!player) return;
+    try {
+      player.start();
+    } catch (error) {
+      console.error(error);
     }
   }, []);
 
   useEffect(() => {
-    const player = new Sampler({
-      urls: {
-        C4: "C4.mp3",
-      },
-      baseUrl: "https://tonejs.github.io/audio/salamander/",
-    }).toDestination();
-    // const pingPong = new Tone.PingPongDelay("1n", 0.3).toDestination();
-    // const pitch = new Tone.PitchShift(10).toDestination();
-    // player.connect(pingPong);
-    // player.connect(pitch);
+    const player = new Player(
+      `${process.env.PUBLIC_URL}/Samples/${soundPack}/${bank}/${sound}`
+    ).toDestination();
     playerRef.current = player;
   }, [sound]);
+
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+    if (isPingPongMode) {
+      player.connect(pingPong);
+    } else {
+      playerRef.current = new Player(
+        `${process.env.PUBLIC_URL}/Samples/${soundPack}/${bank}/${sound}`
+      ).toDestination();
+    }
+  }, [isPingPongMode]);
 
   return (
     <button
