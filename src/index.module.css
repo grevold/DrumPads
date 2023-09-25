@@ -1,6 +1,15 @@
 .root {
   background: #ffffff;
   touch-action: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.start {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
 }
 .header {
   font-size: 30px;
@@ -16,4 +25,48 @@
   max-width: 300px;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 20px;
+}
+.title {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+  color: rgb(155, 155, 155);
+}
+.fx {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.fxButton_off {
+  width: 90px;
+  height: 30px;
+  border: 2px solid black;
+  margin-bottom: 10px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+}
+.fxButton_on {
+  width: 90px;
+  height: 30px;
+  border: 0px;
+  margin-bottom: 10px;
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  color: rgb(255, 255, 255);
 }
