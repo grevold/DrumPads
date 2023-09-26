@@ -41,6 +41,12 @@ const slice = createSlice({
           : [...store.soundEffects, action.payload],
       };
     },
+    selectPack(store, action: PayloadAction<EPack>) {
+      return {
+        ...store,
+        pack: action.payload,
+      };
+    },
   },
 });
 

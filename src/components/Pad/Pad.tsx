@@ -16,8 +16,8 @@ interface Props {
 
 const pingPong = new Tone.PingPongDelay("8n", 0.5).toDestination();
 const phaser = new Tone.Phaser({
-  frequency: 10,
-  octaves: 2,
+  frequency: 15,
+  octaves: 5,
   baseFrequency: 1000,
 }).toDestination();
 const crusher = new Tone.BitCrusher(4).toDestination();
