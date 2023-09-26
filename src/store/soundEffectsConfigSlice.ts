@@ -7,9 +7,9 @@ export enum EPack {
 }
 
 export enum ESoundEffect {
-  PingPong = "PingPong",
-  PhaserMode = "PhaserMode",
-  CrusherMode = "CrusherMode",
+  PingPong = "Delay",
+  PhaserMode = "Phaser",
+  CrusherMode = "Bit Crush",
 }
 
 export enum Banks {
