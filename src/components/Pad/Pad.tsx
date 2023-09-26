@@ -1,17 +1,17 @@
 import { useEffect, useRef, useCallback } from "react";
 import * as Tone from "tone";
 import { Player } from "tone";
+import {
+  ESoundEffect,
+  ISoundEffectsConfig,
+} from "../../store/soundEffectsConfigSlice";
+import { useAppSelector } from "../../store/store";
 
 import s from "./Pad.module.css";
 
 interface Props {
-  sound: string;
+  url: string;
   color: string;
-  soundPack: string;
-  bank: string;
-  isPingPongMode: boolean;
-  isPhaserMode: boolean;
-  isCrusherMode: boolean;
 }
 
 const pingPong = new Tone.PingPongDelay("8n", 0.5).toDestination();
@@ -22,16 +22,34 @@ const phaser = new Tone.Phaser({
 }).toDestination();
 const crusher = new Tone.BitCrusher(4).toDestination();
 
-export function Pad({
-  sound,
-  color,
-  isPingPongMode,
-  isPhaserMode,
-  isCrusherMode,
-  soundPack,
-  bank,
-}: Props) {
+const createPlayerBySoundsEffectsConfigAndUrl = (
+  { soundEffects, pack, bank }: ISoundEffectsConfig,
+  url: string
+): Tone.Player => {
+  const player = new Player(
+    `${process.env.PUBLIC_URL}/Samples/${pack}/${bank}/${url}`
+  ).toDestination();
+
+  if (soundEffects.includes(ESoundEffect.PhaserMode)) {
+    player.connect(phaser);
+  }
+
+  if (soundEffects.includes(ESoundEffect.PingPong)) {
+    player.connect(pingPong);
+  }
+
+  if (soundEffects.includes(ESoundEffect.CrusherMode)) {
+    player.connect(crusher);
+  }
+
+  return player;
+};
+
+export function Pad({ url, color }: Props) {
   const playerRef = useRef<Tone.Player>();
+
+  const config = useAppSelector((store) => store.soundEffectsReducer);
+
   const handleClick = useCallback(() => {
     const player = playerRef.current;
     if (!player) return;
@@ -43,35 +61,14 @@ export function Pad({
   }, []);
 
   useEffect(() => {
-    const player = new Player(
-      `${process.env.PUBLIC_URL}/Samples/${soundPack}/${bank}/${sound}`
-    ).toDestination();
-    playerRef.current = player;
-  }, [sound]);
-
-  useEffect(() => {
-    playerRef.current = new Player(
-      `${process.env.PUBLIC_URL}/Samples/${soundPack}/${bank}/${sound}`
-    ).toDestination();
-
-    if (isPhaserMode) {
-      playerRef.current.connect(phaser);
-    }
-
-    if (isPingPongMode) {
-      playerRef.current.connect(pingPong);
-    }
-
-    if (isCrusherMode) {
-      playerRef.current.connect(crusher);
-    }
-  }, [isPingPongMode, isPhaserMode, isCrusherMode]);
+    playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, url);
+  }, [config, url]);
 
   return (
     <button
       className={s.root}
       style={{ backgroundColor: color }}
       onTouchStart={handleClick}
-    ></button>
+    />
   );
 }
