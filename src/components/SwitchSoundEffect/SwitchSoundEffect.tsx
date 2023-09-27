@@ -25,7 +25,7 @@ export const SwitchSoundEffect = () => {
           <button
             onClick={() => handleClick(soundEffect)}
             className={
-              config.soundEffects.includes(soundEffect)
+              config.soundEffects[soundEffect].enabled
                 ? s.buttonActive
                 : s.button
             }
