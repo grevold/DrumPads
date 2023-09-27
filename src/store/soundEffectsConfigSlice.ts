@@ -47,6 +47,12 @@ const slice = createSlice({
         pack: action.payload,
       };
     },
+    switchBank(store) {
+      return {
+        ...store,
+        bank: store.bank === Banks.A ? Banks.B : Banks.A,
+      };
+    },
   },
 });
 

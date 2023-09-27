@@ -32,13 +32,11 @@ function App() {
     <div className={s.root}>
       <Header />
       <div className={s.playGround}>
-        {samplesArray.map(({ color, sample }) => (
-          <Pad key={sample} url={sample} color={color} />
+        {samplesArray.map(({ color, sample }, index) => (
+          <Pad key={index} url={sample} color={color} />
         ))}
       </div>
-
       <SwitchSoundEffect />
-      <span className={s.title}>Drum Pads</span>
     </div>
   );
 }

@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  width: 100px;
+  margin-left: 50px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(221, 221, 221);
+  border: 2px solid rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+  color: rgb(255, 255, 255);
+}
+
+.button_active {
+  composes: button;
+  background-color: rgb(70, 57, 218);
+  border: 2px solid rgb(70, 57, 218);
+  color: white;
+}
