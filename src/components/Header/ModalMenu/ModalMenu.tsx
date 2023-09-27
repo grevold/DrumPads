@@ -22,16 +22,19 @@ export function ModalMenu({ isOpened }: Props) {
   const config = useAppSelector((store) => store.soundEffectsReducer);
   return (
     <div className={isOpened ? s.rootVisible : s.rootUnVisible}>
-      <ul>
+      <div className={s.container}>
+        <h1 className={s.title}>Soundbank</h1>
         <Select
           value={config.pack}
+          showSearch
+          placeholder="Search to Select"
           onChange={handlePackSelect}
           options={Object.values(EPack).map((value) => ({
             value,
             label: value,
           }))}
         />
-      </ul>
+      </div>
     </div>
   );
 }
