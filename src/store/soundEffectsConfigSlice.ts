@@ -1,4 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PhaserOptions } from "tone";
+import { NormalRange, Positive, Time } from "tone/build/esm/core/type/Units";
 
 export enum EPack {
   Classic_Hip_Hop = "Classic_Hip_Hop",
@@ -18,13 +20,38 @@ export enum Banks {
 }
 
 export interface ISoundEffectsConfig {
-  soundEffects: ESoundEffect[];
+  soundEffects: {
+    [ESoundEffect.PingPong]: {
+      enabled: boolean;
+      params?: { delayTime?: Time; feedback?: NormalRange };
+    };
+    [ESoundEffect.PhaserMode]: {
+      enabled: boolean;
+      params?: Partial<PhaserOptions>;
+    };
+    [ESoundEffect.CrusherMode]: {
+      enabled: boolean;
+      params?: {
+        bits?: Positive;
+      };
+    };
+  };
   pack: EPack;
   bank: Banks;
 }
 
 const initialState: ISoundEffectsConfig = {
-  soundEffects: [],
+  soundEffects: {
+    [ESoundEffect.PingPong]: {
+      enabled: false,
+    },
+    [ESoundEffect.PhaserMode]: {
+      enabled: false,
+    },
+    [ESoundEffect.CrusherMode]: {
+      enabled: false,
+    },
+  },
   pack: EPack.Lazy_Morning,
   bank: Banks.A,
 };
@@ -34,11 +61,17 @@ const slice = createSlice({
   initialState,
   reducers: {
     clickEffect(store, action: PayloadAction<ESoundEffect>) {
+      const configForEffect = store.soundEffects[action.payload];
+
       return {
         ...store,
-        soundEffects: store.soundEffects.includes(action.payload)
-          ? store.soundEffects.filter((effect) => effect !== action.payload)
-          : [...store.soundEffects, action.payload],
+        soundEffects: {
+          ...store.soundEffects,
+          [action.payload]: {
+            ...configForEffect,
+            enabled: !configForEffect.enabled,
+          },
+        },
       };
     },
     selectPack(store, action: PayloadAction<EPack>) {
@@ -51,6 +84,36 @@ const slice = createSlice({
       return {
         ...store,
         bank: store.bank === Banks.A ? Banks.B : Banks.A,
+      };
+    },
+    setDelayTimeForPingPongMode(store, action: PayloadAction<number>) {
+      return {
+        ...store,
+        soundEffects: {
+          ...store.soundEffects,
+          [ESoundEffect.PingPong]: {
+            ...store.soundEffects[ESoundEffect.PingPong],
+            params: {
+              ...store.soundEffects[ESoundEffect.PingPong].params,
+              delayTime: `${action.payload}n`,
+            },
+          },
+        },
+      };
+    },
+    setFeedbackForPingPongMode(store, action: PayloadAction<number>) {
+      return {
+        ...store,
+        soundEffects: {
+          ...store.soundEffects,
+          [ESoundEffect.PingPong]: {
+            ...store.soundEffects[ESoundEffect.PingPong],
+            params: {
+              ...store.soundEffects[ESoundEffect.PingPong].params,
+              feedback: action.payload,
+            },
+          },
+        },
       };
     },
   },

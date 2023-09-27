@@ -6,6 +6,7 @@ import {
 } from "../../../store/soundEffectsConfigSlice";
 import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { EffectsConfigPanel } from "../../EffectsConfigPanel/EffectsConfigPanel";
 
 interface Props {
   isOpened: boolean;
@@ -34,6 +35,7 @@ export function ModalMenu({ isOpened }: Props) {
             label: value,
           }))}
         />
+        <EffectsConfigPanel />
       </div>
     </div>
   );

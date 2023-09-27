@@ -14,13 +14,13 @@ interface Props {
   color: string;
 }
 
-const pingPong = new Tone.PingPongDelay("8n", 0.5).toDestination();
-const phaser = new Tone.Phaser({
-  frequency: 15,
-  octaves: 5,
-  baseFrequency: 1000,
-}).toDestination();
-const crusher = new Tone.BitCrusher(4).toDestination();
+// const pingPong = new Tone.PingPongDelay("8n", 0.5).toDestination();
+// const phaser = new Tone.Phaser({
+//   frequency: 15,
+//   octaves: 5,
+//   baseFrequency: 1000,
+// }).toDestination();
+// const crusher = new Tone.BitCrusher(4).toDestination();
 
 const createPlayerBySoundsEffectsConfigAndUrl = (
   { soundEffects, pack, bank }: ISoundEffectsConfig,
@@ -30,16 +30,29 @@ const createPlayerBySoundsEffectsConfigAndUrl = (
     `${process.env.PUBLIC_URL}/Samples/${pack}/${bank}/${url}`
   ).toDestination();
 
-  if (soundEffects.includes(ESoundEffect.PhaserMode)) {
-    player.connect(phaser);
+  if (soundEffects[ESoundEffect.PhaserMode].enabled) {
+    player.connect(
+      new Tone.Phaser(
+        soundEffects[ESoundEffect.PhaserMode].params
+      ).toDestination()
+    );
   }
 
-  if (soundEffects.includes(ESoundEffect.PingPong)) {
-    player.connect(pingPong);
+  if (soundEffects[ESoundEffect.PingPong].enabled) {
+    player.connect(
+      new Tone.PingPongDelay(
+        soundEffects[ESoundEffect.PingPong].params?.delayTime,
+        soundEffects[ESoundEffect.PingPong].params?.feedback
+      ).toDestination()
+    );
   }
 
-  if (soundEffects.includes(ESoundEffect.CrusherMode)) {
-    player.connect(crusher);
+  if (soundEffects[ESoundEffect.CrusherMode].enabled) {
+    player.connect(
+      new Tone.BitCrusher(
+        soundEffects[ESoundEffect.CrusherMode].params?.bits
+      ).toDestination()
+    );
   }
 
   return player;
@@ -49,7 +62,6 @@ export function Pad({ url, color }: Props) {
   const playerRef = useRef<Tone.Player>();
 
   const config = useAppSelector((store) => store.soundEffectsReducer);
-
   const handleClick = useCallback(() => {
     const player = playerRef.current;
     if (!player) return;
