@@ -1,11 +1,13 @@
-import { Pad } from "./components/Pad/Pad";
 import { useState } from "react";
 import { Header } from "./components/Header/Header";
-import { SwitchSoundEffect } from "./components/SwitchSoundEffect/SwitchSoundEffect";
 import { useAppSelector } from "./store/store";
 import { samples } from "./Texts";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import s from "./index.module.css";
+import { Main } from "./components/Main/Main";
+import { RoutePath } from "./types";
+import { Config } from "./components/Config/Config";
 
 function App() {
   const config = useAppSelector((store) => store.soundEffectsReducer);
@@ -29,15 +31,13 @@ function App() {
   }
 
   return (
-    <div className={s.root}>
+    <HashRouter>
       <Header />
-      <div className={s.playGround}>
-        {samplesArray.map(({ color, sample }, index) => (
-          <Pad key={index} url={sample} color={color} />
-        ))}
-      </div>
-      <SwitchSoundEffect />
-    </div>
+      <Routes>
+        <Route element={<Config />} path={RoutePath.Config} />
+        <Route element={<Main />} path={"*"} />
+      </Routes>
+    </HashRouter>
   );
 }
 

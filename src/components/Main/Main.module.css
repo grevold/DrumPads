@@ -1,0 +1,39 @@
+.root {
+  background: #ffffff;
+  touch-action: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.start {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.header {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+  text-align: center;
+  margin-bottom: 20px;
+}
+.playGround {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.title {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+  color: rgb(155, 155, 155);
+}
