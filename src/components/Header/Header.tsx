@@ -1,26 +1,29 @@
-import { useState } from "react";
 import { Burger } from "../../icons/Burger";
 import { useAppSelector } from "../../store/store";
 
 import s from "./Header.module.css";
-import { ModalMenu } from "./ModalMenu/ModalMenu";
+
 import { SwitchBanks } from "./components/SwitchBanks/SwitchBanks";
+import { useLocation } from "react-router";
+import { RoutePath } from "../../types";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const nameOfPack = useAppSelector((store) => store.soundEffectsReducer.pack);
-  const [isOpenedMenu, setState] = useState(false);
+  const location = useLocation();
   return (
     <div className={s.root}>
       <h1 className={s.header}>{nameOfPack}</h1>
       <SwitchBanks />
-      <Burger
-        isBurgerOpen={isOpenedMenu}
-        className={s.burger}
-        onClick={() => {
-          setState((prevState) => !prevState);
-        }}
-      />
-      <ModalMenu isOpened={isOpenedMenu} />
+      <Link
+        to={
+          location.pathname === RoutePath.Main
+            ? RoutePath.Config
+            : RoutePath.Main
+        }
+      >
+        <Burger />
+      </Link>
     </div>
   );
 }
