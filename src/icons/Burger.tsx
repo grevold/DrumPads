@@ -1,6 +1,11 @@
-export function Burger() {
+interface IProps {
+  onClick?: () => void;
+}
+
+export function Burger({ onClick }: IProps) {
   return (
     <svg
+      onClick={onClick}
       width="43"
       height="20"
       viewBox="0 0 53 39"

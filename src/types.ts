@@ -1,4 +1,5 @@
 export enum RoutePath {
-  Main = "/",
-  Config = "config",
+  AllowSounds = "AllowSounds",
+  Main = "Main",
+  Config = "Config",
 }

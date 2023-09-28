@@ -27,7 +27,7 @@ export interface ISoundEffectsConfig {
     };
     [ESoundEffect.PhaserMode]: {
       enabled: boolean;
-      params?: Partial<PhaserOptions>;
+      params?: { frequency?: number; octaves?: number; baseFrequency?: number };
     };
     [ESoundEffect.CrusherMode]: {
       enabled: boolean;
@@ -111,6 +111,51 @@ const slice = createSlice({
             params: {
               ...store.soundEffects[ESoundEffect.PingPong].params,
               feedback: action.payload,
+            },
+          },
+        },
+      };
+    },
+    setFrequencyForPhaserMode(store, action: PayloadAction<number>) {
+      return {
+        ...store,
+        soundEffects: {
+          ...store.soundEffects,
+          [ESoundEffect.PhaserMode]: {
+            ...store.soundEffects[ESoundEffect.PhaserMode],
+            params: {
+              ...store.soundEffects[ESoundEffect.PhaserMode].params,
+              frequency: action.payload,
+            },
+          },
+        },
+      };
+    },
+    setOctavesForPhaserMode(store, action: PayloadAction<number>) {
+      return {
+        ...store,
+        soundEffects: {
+          ...store.soundEffects,
+          [ESoundEffect.PhaserMode]: {
+            ...store.soundEffects[ESoundEffect.PhaserMode],
+            params: {
+              ...store.soundEffects[ESoundEffect.PhaserMode].params,
+              octaves: action.payload,
+            },
+          },
+        },
+      };
+    },
+    setBaseFrequencyForPhaserMode(store, action: PayloadAction<number>) {
+      return {
+        ...store,
+        soundEffects: {
+          ...store.soundEffects,
+          [ESoundEffect.PhaserMode]: {
+            ...store.soundEffects[ESoundEffect.PhaserMode],
+            params: {
+              ...store.soundEffects[ESoundEffect.PhaserMode].params,
+              baseFrequency: action.payload,
             },
           },
         },
