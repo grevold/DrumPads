@@ -1,0 +1,62 @@
+import * as Tone from "tone";
+import {
+  ESoundEffect,
+  ISoundEffectsConfig,
+} from "../../store/soundEffectsConfigSlice";
+// const pingPong = new Tone.PingPongDelay("8n", 0.5).toDestination();
+// const phaser = new Tone.Phaser({
+//   frequency: 15,
+//   octaves: 5,
+//   baseFrequency: 1000,
+// }).toDestination();
+// const crusher = new Tone.BitCrusher(4).toDestination();
+
+interface IEffect {
+  dispose: () => void;
+}
+
+export interface IPadState {
+  player: Tone.Player;
+  connectedEffects: IEffect[];
+}
+
+export const createPlayerBySoundsEffectsConfigAndUrl = (
+  { soundEffects, pack, bank }: ISoundEffectsConfig,
+  url: string
+): IPadState => {
+  const player = new Tone.Player(
+    `${process.env.PUBLIC_URL}/Samples/${pack}/${bank}/${url}`
+  ).toDestination();
+
+  const connectedEffects: IEffect[] = [];
+
+  if (soundEffects[ESoundEffect.PhaserMode].enabled) {
+    const effect = new Tone.Phaser(
+      soundEffects[ESoundEffect.PhaserMode].params
+    ).toDestination();
+
+    player.connect(effect);
+    connectedEffects.push(effect);
+  }
+
+  if (soundEffects[ESoundEffect.PingPong].enabled) {
+    const effect = new Tone.PingPongDelay(
+      soundEffects[ESoundEffect.PingPong].params?.delayTime,
+      soundEffects[ESoundEffect.PingPong].params?.feedback
+    ).toDestination();
+
+    player.connect(effect);
+    connectedEffects.push(effect);
+  }
+
+  if (soundEffects[ESoundEffect.CrusherMode].enabled) {
+    const effect = new Tone.BitCrusher(
+      soundEffects[ESoundEffect.CrusherMode].params?.bits
+    ).toDestination();
+
+    player.connect(effect);
+    connectedEffects.push(effect);
+  }
+
+  return { player, connectedEffects };
+};

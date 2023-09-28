@@ -1,43 +1,41 @@
 import { useState } from "react";
 import { Header } from "./components/Header/Header";
-import { useAppSelector } from "./store/store";
-import { samples } from "./Texts";
-import { HashRouter, Route, Routes } from "react-router-dom";
-
-import s from "./index.module.css";
 import { Main } from "./components/Main/Main";
 import { RoutePath } from "./types";
+import { Router } from "./Router";
 import { Config } from "./components/Config/Config";
 
+import s from "./index.module.css";
+
 function App() {
-  const config = useAppSelector((store) => store.soundEffectsReducer);
-  const samplesArray = samples[config.pack][config.bank];
-
-  const [state, setState] = useState(false);
-
-  if (!state) {
-    return (
-      <div className={s.root}>
-        <button
-          className={s.start}
-          onClick={() => {
-            setState(true);
-          }}
-        >
-          Начать
-        </button>
-      </div>
-    );
-  }
+  const [route, setRoute] = useState<RoutePath>(RoutePath.AllowSounds);
 
   return (
-    <HashRouter>
-      <Header />
-      <Routes>
-        <Route element={<Config />} path={RoutePath.Config} />
-        <Route element={<Main />} path={"*"} />
-      </Routes>
-    </HashRouter>
+    <Router.Provider
+      value={{
+        switch: setRoute,
+      }}
+    >
+      {route === RoutePath.AllowSounds && (
+        <div className={s.root}>
+          <button className={s.start} onClick={() => setRoute(RoutePath.Main)}>
+            Начать
+          </button>
+        </div>
+      )}
+      {route === RoutePath.Config && (
+        <>
+          <Header onClick={() => setRoute(RoutePath.Main)} />
+          <Config />
+        </>
+      )}
+      {route === RoutePath.Main && (
+        <>
+          <Header onClick={() => setRoute(RoutePath.Config)} />
+          <Main />
+        </>
+      )}
+    </Router.Provider>
   );
 }
 
