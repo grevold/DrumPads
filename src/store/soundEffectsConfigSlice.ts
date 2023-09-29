@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PhaserOptions } from "tone";
 import { NormalRange, Positive, Time } from "tone/build/esm/core/type/Units";
 
 export enum EPack {
@@ -156,6 +155,21 @@ const slice = createSlice({
             params: {
               ...store.soundEffects[ESoundEffect.PhaserMode].params,
               baseFrequency: action.payload,
+            },
+          },
+        },
+      };
+    },
+    setBitForCrusherMode(store, action: PayloadAction<number>) {
+      return {
+        ...store,
+        soundEffects: {
+          ...store.soundEffects,
+          [ESoundEffect.CrusherMode]: {
+            ...store.soundEffects[ESoundEffect.CrusherMode],
+            params: {
+              ...store.soundEffects[ESoundEffect.CrusherMode].params,
+              bits: action.payload,
             },
           },
         },

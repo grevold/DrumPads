@@ -47,7 +47,7 @@ export const PingPongConfigPanel = () => {
           step={0.1}
           value={params?.feedback}
           min={0}
-          max={1}
+          max={0.9}
           onChange={handleDelayFeedback}
         />
       </div>
