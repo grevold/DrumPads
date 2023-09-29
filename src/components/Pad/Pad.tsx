@@ -26,7 +26,7 @@ export function Pad({ url, color }: Props) {
   useEffect(() => {
     playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, url);
     return () => {
-      playerRef.current?.player.dispose();
+      // playerRef.current?.player.dispose();
       playerRef.current?.connectedEffects.forEach((connectedEffect) =>
         connectedEffect.dispose()
       );

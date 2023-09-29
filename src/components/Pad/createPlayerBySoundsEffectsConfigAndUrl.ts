@@ -3,13 +3,6 @@ import {
   ESoundEffect,
   ISoundEffectsConfig,
 } from "../../store/soundEffectsConfigSlice";
-// const pingPong = new Tone.PingPongDelay("8n", 0.5).toDestination();
-// const phaser = new Tone.Phaser({
-//   frequency: 15,
-//   octaves: 5,
-//   baseFrequency: 1000,
-// }).toDestination();
-// const crusher = new Tone.BitCrusher(4).toDestination();
 
 interface IEffect {
   dispose: () => void;

@@ -4,7 +4,7 @@ import {
   soundEffectsActions,
 } from "../../../../store/soundEffectsConfigSlice";
 import { useAppDispatch, useAppSelector } from "../../../../store/store";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import s from "./PhaserConfigPanel.module.css";
 
 export const PhaserConfigPanel = () => {
@@ -52,16 +52,6 @@ export const PhaserConfigPanel = () => {
             min={1}
             max={10}
             onChange={handleOctavesChange}
-          />
-        </div>
-        <div>
-          <h3>Base</h3>
-          <Slider
-            vertical
-            value={params?.baseFrequency}
-            min={1}
-            max={20}
-            onChange={handleBaseFrequencyChange}
           />
         </div>
       </div>
