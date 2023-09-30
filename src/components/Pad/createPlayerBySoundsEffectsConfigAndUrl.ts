@@ -23,19 +23,18 @@ export const createPlayerBySoundsEffectsConfigAndUrl = (
 
   const connectedEffects: IEffect[] = [];
 
-  if (soundEffects[ESoundEffect.PhaserMode].enabled) {
-    const effect = new Tone.Phaser(
-      soundEffects[ESoundEffect.PhaserMode].params
+  if (soundEffects[ESoundEffect.PingPong].enabled) {
+    const effect = new Tone.PingPongDelay(
+      soundEffects[ESoundEffect.PingPong].params?.delayTime,
+      soundEffects[ESoundEffect.PingPong].params?.feedback
     ).toDestination();
 
     player.connect(effect);
     connectedEffects.push(effect);
   }
-
-  if (soundEffects[ESoundEffect.PingPong].enabled) {
-    const effect = new Tone.PingPongDelay(
-      soundEffects[ESoundEffect.PingPong].params?.delayTime,
-      soundEffects[ESoundEffect.PingPong].params?.feedback
+  if (soundEffects[ESoundEffect.Reverb].enabled) {
+    const effect = new Tone.Reverb(
+      soundEffects[ESoundEffect.Reverb].params?.roomSize
     ).toDestination();
 
     player.connect(effect);

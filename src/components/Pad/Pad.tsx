@@ -20,10 +20,25 @@ export function Pad({ url, color }: Props) {
   const handleClick = useCallback(() => {
     const player = playerRef.current?.player;
     if (!player || !player.loaded) return;
-    player.start();
+    try {
+      player.start();
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   useEffect(() => {
+    const state = playerRef.current;
+    if (state) {
+      const { player, connectedEffects } = state;
+      player.onstop = () => {
+        player.dispose();
+        connectedEffects.forEach((connectedEffect) =>
+          connectedEffect.dispose()
+        );
+      };
+    }
+
     playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, url);
     return () => {
       // playerRef.current?.player.dispose();
