@@ -9,7 +9,7 @@ export enum EPack {
 
 export enum ESoundEffect {
   PingPong = "Delay",
-  PhaserMode = "Phaser",
+  Reverb = "Reverb",
   CrusherMode = "Bit Crush",
 }
 
@@ -24,9 +24,9 @@ export interface ISoundEffectsConfig {
       enabled: boolean;
       params?: { delayTime?: Time; feedback?: NormalRange };
     };
-    [ESoundEffect.PhaserMode]: {
+    [ESoundEffect.Reverb]: {
       enabled: boolean;
-      params?: { frequency?: number; octaves?: number; baseFrequency?: number };
+      params?: { roomSize?: number };
     };
     [ESoundEffect.CrusherMode]: {
       enabled: boolean;
@@ -44,9 +44,10 @@ const initialState: ISoundEffectsConfig = {
     [ESoundEffect.PingPong]: {
       enabled: false,
     },
-    [ESoundEffect.PhaserMode]: {
+    [ESoundEffect.Reverb]: {
       enabled: false,
     },
+
     [ESoundEffect.CrusherMode]: {
       enabled: false,
     },
@@ -115,51 +116,22 @@ const slice = createSlice({
         },
       };
     },
-    setFrequencyForPhaserMode(store, action: PayloadAction<number>) {
+    setRoomSizeForReverb(store, action: PayloadAction<number>) {
       return {
         ...store,
         soundEffects: {
           ...store.soundEffects,
-          [ESoundEffect.PhaserMode]: {
-            ...store.soundEffects[ESoundEffect.PhaserMode],
+          [ESoundEffect.Reverb]: {
+            ...store.soundEffects[ESoundEffect.Reverb],
             params: {
-              ...store.soundEffects[ESoundEffect.PhaserMode].params,
-              frequency: action.payload,
+              ...store.soundEffects[ESoundEffect.Reverb].params,
+              roomSize: action.payload,
             },
           },
         },
       };
     },
-    setOctavesForPhaserMode(store, action: PayloadAction<number>) {
-      return {
-        ...store,
-        soundEffects: {
-          ...store.soundEffects,
-          [ESoundEffect.PhaserMode]: {
-            ...store.soundEffects[ESoundEffect.PhaserMode],
-            params: {
-              ...store.soundEffects[ESoundEffect.PhaserMode].params,
-              octaves: action.payload,
-            },
-          },
-        },
-      };
-    },
-    setBaseFrequencyForPhaserMode(store, action: PayloadAction<number>) {
-      return {
-        ...store,
-        soundEffects: {
-          ...store.soundEffects,
-          [ESoundEffect.PhaserMode]: {
-            ...store.soundEffects[ESoundEffect.PhaserMode],
-            params: {
-              ...store.soundEffects[ESoundEffect.PhaserMode].params,
-              baseFrequency: action.payload,
-            },
-          },
-        },
-      };
-    },
+
     setBitForCrusherMode(store, action: PayloadAction<number>) {
       return {
         ...store,

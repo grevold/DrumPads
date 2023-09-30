@@ -1,0 +1,38 @@
+import { Slider } from "antd";
+import {
+  ESoundEffect,
+  soundEffectsActions,
+} from "../../../../store/soundEffectsConfigSlice";
+import { useAppDispatch, useAppSelector } from "../../../../store/store";
+import { useCallback } from "react";
+import s from "./ReverbPanel.module.css";
+
+export const ReverbPanel = () => {
+  const params = useAppSelector(
+    (store) =>
+      store.soundEffectsReducer.soundEffects[ESoundEffect.Reverb].params
+  );
+  const dispatch = useAppDispatch();
+
+  const handleRoomSizeChange = useCallback(
+    (value: number) =>
+      dispatch(soundEffectsActions.setRoomSizeForReverb(value)),
+    [dispatch]
+  );
+
+  return (
+    <div>
+      <h3>Reverb</h3>
+      <div style={{ height: "150px" }} className={s.regulators}>
+        <Slider
+          vertical
+          value={params?.roomSize}
+          step={1}
+          min={1}
+          max={20}
+          onChange={handleRoomSizeChange}
+        />
+      </div>
+    </div>
+  );
+};
