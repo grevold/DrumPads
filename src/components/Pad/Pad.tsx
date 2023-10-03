@@ -19,6 +19,7 @@ export function Pad({ url, color }: Props) {
 
   const handleClick = useCallback(() => {
     const player = playerRef.current?.player;
+
     if (!player || !player.loaded) return;
     try {
       player.start();
@@ -38,7 +39,6 @@ export function Pad({ url, color }: Props) {
         );
       };
     }
-
     playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, url);
     return () => {
       // playerRef.current?.player.dispose();
