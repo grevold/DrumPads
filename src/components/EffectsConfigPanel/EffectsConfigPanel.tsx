@@ -7,9 +7,12 @@ import { ReverbPanel } from "./components/ReverbPanel/ReverbPanel";
 export const EffectsConfigPanel = () => {
   return (
     <div className={s.root}>
-      <PingPongConfigPanel />
-      <ReverbPanel />
-      <CrusherConfigPanel />
+      <h1 className={s.header}>FX PANEL</h1>
+      <div className={s.effects}>
+        <PingPongConfigPanel />
+        <ReverbPanel />
+        <CrusherConfigPanel />
+      </div>
     </div>
   );
 };

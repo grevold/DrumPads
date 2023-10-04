@@ -13,3 +13,6 @@
   color: white;
   margin-bottom: 10px;
 }
+.ant-select-selector {
+  border-radius: 0px !important;
+}

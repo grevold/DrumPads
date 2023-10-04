@@ -26,6 +26,7 @@ export function SwitchBanks() {
         checkedChildren={config.bank}
         unCheckedChildren={Banks.B}
         defaultChecked
+        className={s.custom_switch}
       />
     </div>
   );

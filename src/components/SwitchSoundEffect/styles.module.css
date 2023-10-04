@@ -24,3 +24,16 @@
   background-color: rgb(138, 8, 198);
   color: rgb(255, 255, 255);
 }
+
+.buttonActiveDelay {
+  composes: buttonActive;
+  background-color: rgb(138, 8, 198);
+}
+.buttonActiveReverb {
+  composes: buttonActive;
+  background-color: rgb(14, 155, 173);
+}
+.buttonActiveCrusher {
+  composes: buttonActive;
+  background-color: rgb(198, 96, 12);
+}
