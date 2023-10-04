@@ -32,24 +32,30 @@ export const PingPongConfigPanel = () => {
   );
 
   return (
-    <div>
-      <h3>Delay</h3>
+    <div className={s.root}>
+      <h3 className={s.header}>Delay</h3>
       <div style={{ height: "150px" }} className={s.regulators}>
-        <Slider
-          vertical
-          value={delayTimeValue}
-          min={1}
-          max={30}
-          onChange={handleDelayTimeChange}
-        />
-        <Slider
-          vertical
-          step={0.1}
-          value={params?.feedback}
-          min={0}
-          max={0.9}
-          onChange={handleDelayFeedback}
-        />
+        <div className={s.regulator}>
+          <Slider
+            vertical
+            value={delayTimeValue}
+            min={1}
+            max={30}
+            onChange={handleDelayTimeChange}
+          />
+          <h3 className={s.option}>Time</h3>
+        </div>
+        <div className={s.regulator}>
+          <Slider
+            vertical
+            step={0.1}
+            value={params?.feedback}
+            min={0}
+            max={0.9}
+            onChange={handleDelayFeedback}
+          />
+          <h3 className={s.option}>Fb</h3>
+        </div>
       </div>
     </div>
   );

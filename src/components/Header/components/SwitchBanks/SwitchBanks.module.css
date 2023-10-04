@@ -21,3 +21,9 @@
   border: 2px solid rgb(70, 57, 218);
   color: white;
 }
+.custom_switch {
+  background-color: rgb(19, 141, 15) !important;
+  color: black !important;
+  border-radius: 0px !important;
+  height: 25px;
+}

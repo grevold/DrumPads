@@ -20,11 +20,10 @@ export const CrusherConfigPanel = () => {
     [dispatch]
   );
   return (
-    <div>
-      <h3>Crusher</h3>
+    <div className={s.root}>
+      <h3 className={s.header}>Crusher</h3>
       <div style={{ height: "150px" }} className={s.regulators}>
-        <div>
-          <h3>Bits</h3>
+        <div className={s.regulator}>
           <Slider
             vertical
             value={params?.bits}
@@ -32,6 +31,7 @@ export const CrusherConfigPanel = () => {
             max={10}
             onChange={handleCrusherChange}
           />
+          <h3 className={s.option}>Bits</h3>
         </div>
       </div>
     </div>

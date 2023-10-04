@@ -27,6 +27,7 @@ export function Config() {
     <div className={s.container}>
       <h1 className={s.title}>Soundbank</h1>
       <Select
+        className={s.select}
         value={config.pack}
         showSearch
         placeholder="Search to Select"

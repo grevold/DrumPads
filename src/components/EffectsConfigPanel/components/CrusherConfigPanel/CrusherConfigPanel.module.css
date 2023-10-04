@@ -1,3 +1,33 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  background-color: rgb(198, 96, 12);
+  color: white;
+}
 .regulators {
   display: flex;
+}
+.option {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Proxima Nova";
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.header {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.regulator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

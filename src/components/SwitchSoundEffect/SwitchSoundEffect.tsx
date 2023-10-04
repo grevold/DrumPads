@@ -17,10 +17,47 @@ export const SwitchSoundEffect = () => {
     },
     [dispatch]
   );
+  console.log(ESoundEffect);
 
   return (
     <ul className={s.root}>
-      {Object.values(ESoundEffect).map((soundEffect) => (
+      <li key={"Delay"}>
+        <button
+          onClick={() => handleClick(ESoundEffect.PingPong)}
+          className={
+            config.soundEffects["Delay"].enabled
+              ? s.buttonActiveDelay
+              : s.button
+          }
+        >
+          {"Delay"}
+        </button>
+      </li>
+      <li key={"Reverb"}>
+        <button
+          onClick={() => handleClick(ESoundEffect.Reverb)}
+          className={
+            config.soundEffects["Reverb"].enabled
+              ? s.buttonActiveReverb
+              : s.button
+          }
+        >
+          {"Reverb"}
+        </button>
+      </li>
+      <li key={"Crusher"}>
+        <button
+          onClick={() => handleClick(ESoundEffect.CrusherMode)}
+          className={
+            config.soundEffects[ESoundEffect.CrusherMode].enabled
+              ? s.buttonActiveCrusher
+              : s.button
+          }
+        >
+          {"Crusher"}
+        </button>
+      </li>
+      {/* {Object.values(ESoundEffect).map((soundEffect) => (
         <li key={soundEffect}>
           <button
             onClick={() => handleClick(soundEffect)}
@@ -33,7 +70,7 @@ export const SwitchSoundEffect = () => {
             {soundEffect}
           </button>
         </li>
-      ))}
+      ))} */}
     </ul>
   );
 };
