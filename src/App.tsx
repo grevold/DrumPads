@@ -6,6 +6,7 @@ import { Router } from "./Router";
 import { Config } from "./components/Config/Config";
 
 import s from "./index.module.css";
+import { Recorder } from "./components/Recorder/Recorder";
 
 function App() {
   const [route, setRoute] = useState<RoutePath>(RoutePath.AllowSounds);
@@ -33,6 +34,7 @@ function App() {
         <>
           <Header onClick={() => setRoute(RoutePath.Config)} />
           <Main />
+          <Recorder />
         </>
       )}
     </Router.Provider>
