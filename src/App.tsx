@@ -6,10 +6,13 @@ import { Router } from "./Router";
 import { Config } from "./components/Config/Config";
 
 import s from "./index.module.css";
-import { Recorder } from "./components/Recorder/Recorder";
 
 function App() {
   const [route, setRoute] = useState<RoutePath>(RoutePath.AllowSounds);
+  const [state, setState] = useState(false);
+  setInterval(() => {
+    setState((prevState) => !prevState);
+  }, 1000);
 
   return (
     <Router.Provider
@@ -18,10 +21,8 @@ function App() {
       }}
     >
       {route === RoutePath.AllowSounds && (
-        <div className={s.root}>
-          <button className={s.start} onClick={() => setRoute(RoutePath.Main)}>
-            Начать
-          </button>
+        <div className={s.root} onClick={() => setRoute(RoutePath.Main)}>
+          <button className={state ? s.start_shadow : s.start}>Начать</button>
         </div>
       )}
       {route === RoutePath.Config && (
@@ -31,11 +32,10 @@ function App() {
         </>
       )}
       {route === RoutePath.Main && (
-        <>
+        <div>
           <Header onClick={() => setRoute(RoutePath.Config)} />
           <Main />
-          <Recorder />
-        </>
+        </div>
       )}
     </Router.Provider>
   );

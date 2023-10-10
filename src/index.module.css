@@ -1,15 +1,35 @@
 .root {
-  background: #ffffff;
   touch-action: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+.root_main {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+.start_shadow {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  margin: 0 auto;
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+  background-color: rgb(35, 130, 240);
+  border: none;
+  box-shadow: 0px 0px 50px 30px rgb(105, 173, 250);
+  transition: box-shadow 1s ease-in-out;
 }
 .start {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
+  composes: start_shadow;
+  box-shadow: 10px 5px 5px rgb(255, 255, 255);
+  transition: box-shadow 1s ease-in-out;
 }
 .header {
   font-size: 30px;
@@ -36,4 +56,32 @@
   font-weight: 600;
   font-family: "Proxima Nova";
   color: rgb(155, 155, 155);
+}
+
+@media (min-width: 450px) {
+  .start_shadow {
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 200px;
+    font-size: 50px;
+  }
+}
+@media (min-width: 550px) {
+  .start_shadow {
+    display: block;
+    width: 300px;
+    height: 300px;
+    border-radius: 200px;
+    font-size: 50px;
+  }
+}
+@media (min-width: 650px) {
+  .start_shadow {
+    display: block;
+    width: 350px;
+    height: 350px;
+    border-radius: 200px;
+    font-size: 50px;
+  }
 }
