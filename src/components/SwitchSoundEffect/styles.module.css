@@ -10,11 +10,11 @@
 
 .button {
   width: 90px;
-  height: 30px;
+  height: 20px;
   border: 2px solid black;
   background-color: white;
   color: black;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   font-family: "Proxima Nova";
 }
@@ -36,4 +36,61 @@
 .buttonActiveCrusher {
   composes: buttonActive;
   background-color: rgb(198, 96, 12);
+}
+@media (min-height: 480px) {
+  .root {
+    max-width: 350px;
+  }
+  .button {
+    width: 90px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 450px) {
+  .root {
+    max-width: 360px;
+  }
+  .button {
+    width: 100px;
+    height: 40px;
+  }
+}
+@media (min-width: 550px) {
+  .root {
+    max-width: 420px;
+  }
+  .button {
+    width: 120px;
+    height: 40px;
+  }
+}
+@media (min-width: 650px) {
+  .root {
+    max-width: 460px;
+  }
+  .button {
+    width: 120px;
+    height: 40px;
+  }
+}
+@media (min-width: 820px) {
+  .root {
+    max-width: 720px;
+  }
+  .button {
+    width: 230px;
+    height: 80px;
+    font-size: 30px;
+  }
+}
+@media (min-width: 1024px) {
+  .root {
+    max-width: 870px;
+  }
+  .button {
+    width: 270px;
+    height: 80px;
+    font-size: 30px;
+  }
 }
