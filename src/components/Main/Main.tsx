@@ -7,11 +7,12 @@ import s from "./Main.module.css";
 export function Main() {
   const config = useAppSelector((store) => store.soundEffectsReducer);
   const samplesArray = samples[config.pack][config.bank];
+
   return (
     <div className={s.root}>
       <div className={s.playGround}>
-        {samplesArray.map(({ color, sample }, index) => (
-          <Pad key={index} url={sample} color={color} />
+        {samplesArray.map(({ color, sample, keyBoard }, index) => (
+          <Pad key={index} url={sample} color={color} keyBoard={keyBoard} />
         ))}
       </div>
       <SwitchSoundEffect />

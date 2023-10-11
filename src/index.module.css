@@ -58,7 +58,7 @@
   color: rgb(155, 155, 155);
 }
 
-@media (min-width: 450px) {
+/* @media (min-width: 450px) {
   .start_shadow {
     display: block;
     width: 250px;
@@ -84,4 +84,4 @@
     border-radius: 200px;
     font-size: 50px;
   }
-}
+} */
