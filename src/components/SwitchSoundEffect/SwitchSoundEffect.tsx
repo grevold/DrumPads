@@ -17,7 +17,6 @@ export const SwitchSoundEffect = () => {
     },
     [dispatch]
   );
-  console.log(ESoundEffect);
 
   return (
     <ul className={s.root}>

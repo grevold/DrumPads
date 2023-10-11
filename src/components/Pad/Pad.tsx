@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useAppSelector } from "../../store/store";
+import { useKeyPressEvent } from "react-use";
 import {
   IPadState,
   createPlayerBySoundsEffectsConfigAndUrl,
@@ -10,16 +11,16 @@ import s from "./Pad.module.css";
 interface Props {
   url: string;
   color: string;
+  keyBoard: string;
 }
 
-export function Pad({ url, color }: Props) {
+export function Pad({ url, color, keyBoard }: Props) {
   const playerRef = useRef<IPadState>();
 
   const config = useAppSelector((store) => store.soundEffectsReducer);
 
   const handleClick = useCallback(() => {
     const player = playerRef.current?.player;
-
     if (!player || !player.loaded) return;
     try {
       player.start();
@@ -41,18 +42,29 @@ export function Pad({ url, color }: Props) {
     }
     playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, url);
     return () => {
-      // playerRef.current?.player.dispose();
       playerRef.current?.connectedEffects.forEach((connectedEffect) =>
         connectedEffect.dispose()
       );
     };
   }, [config, url]);
 
-  return (
-    <button
-      className={s.root}
-      style={{ backgroundColor: color }}
-      onTouchStart={handleClick}
-    />
-  );
+  useKeyPressEvent(`${keyBoard}`, handleClick);
+
+  if (window.innerWidth > 1200) {
+    return (
+      <button
+        className={s.root}
+        style={{ backgroundColor: color }}
+        onClick={handleClick}
+      />
+    );
+  } else {
+    return (
+      <button
+        className={s.root}
+        style={{ backgroundColor: color }}
+        onTouchStart={handleClick}
+      />
+    );
+  }
 }

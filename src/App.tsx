@@ -26,13 +26,13 @@ function App() {
         </div>
       )}
       {route === RoutePath.Config && (
-        <>
+        <div className={s.root}>
           <Header onClick={() => setRoute(RoutePath.Main)} />
           <Config />
-        </>
+        </div>
       )}
       {route === RoutePath.Main && (
-        <div>
+        <div className={s.root}>
           <Header onClick={() => setRoute(RoutePath.Config)} />
           <Main />
         </div>
