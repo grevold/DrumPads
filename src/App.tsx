@@ -9,10 +9,6 @@ import s from "./index.module.css";
 
 function App() {
   const [route, setRoute] = useState<RoutePath>(RoutePath.AllowSounds);
-  const [state, setState] = useState(false);
-  setInterval(() => {
-    setState((prevState) => !prevState);
-  }, 1000);
 
   return (
     <Router.Provider
@@ -22,7 +18,7 @@ function App() {
     >
       {route === RoutePath.AllowSounds && (
         <div className={s.root} onClick={() => setRoute(RoutePath.Main)}>
-          <button className={state ? s.start_shadow : s.start}>Начать</button>
+          <button className={s.start}>Начать</button>
         </div>
       )}
       {route === RoutePath.Config && (
