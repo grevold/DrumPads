@@ -23,10 +23,12 @@ export function Config() {
     [dispatch]
   );
   const config = useAppSelector((store) => store.soundEffectsReducer);
+
   return (
     <div className={s.container}>
       <h1 className={s.title}>Soundbank</h1>
       <Select
+        id={"select"}
         className={s.select}
         value={config.pack}
         showSearch

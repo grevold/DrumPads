@@ -2,9 +2,12 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { NormalRange, Positive, Time } from "tone/build/esm/core/type/Units";
 
 export enum EPack {
-  Classic_Hip_Hop = "Classic_Hip_Hop",
-  Lazy_Morning = "Lazy_Morning",
-  LoFi_Night = "LoFi_Night",
+  Classic_808 = "Classic_808",
+  Classic_909 = "Classic_909",
+  Dirty = "Dirty",
+  Memphis = "Memphis",
+  Phonk = "Phonk",
+  Synthwave = "Synthwave",
 }
 
 export enum ESoundEffect {
@@ -52,7 +55,7 @@ const initialState: ISoundEffectsConfig = {
       enabled: false,
     },
   },
-  pack: EPack.Lazy_Morning,
+  pack: EPack.Classic_808,
   bank: Banks.A,
 };
 
