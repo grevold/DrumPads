@@ -17,6 +17,7 @@
   font-size: 14px;
   font-weight: 600;
   font-family: "Proxima Nova";
+  cursor: pointer;
 }
 
 .buttonActive {

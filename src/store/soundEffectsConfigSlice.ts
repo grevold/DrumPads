@@ -134,7 +134,6 @@ const slice = createSlice({
         },
       };
     },
-
     setBitForCrusherMode(store, action: PayloadAction<number>) {
       return {
         ...store,

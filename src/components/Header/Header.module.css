@@ -17,10 +17,12 @@
   position: absolute;
   right: 0;
   z-index: 5;
+  cursor: pointer;
 }
 .button_burger {
   background-color: white;
   border: 0;
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   .root {

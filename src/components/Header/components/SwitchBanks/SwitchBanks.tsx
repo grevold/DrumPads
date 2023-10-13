@@ -8,22 +8,17 @@ import { Switch } from "antd";
 
 import s from "./SwitchBanks.module.css";
 
-interface Props {
-  className: string;
-}
-
 export function SwitchBanks() {
   const dispatch = useAppDispatch();
   const handleBankSelect = useCallback(() => {
     dispatch(soundEffectsActions.switchBank());
   }, [dispatch]);
-  const config = useAppSelector((store) => store.soundEffectsReducer);
 
   return (
     <div className={s.root}>
       <Switch
         onClick={handleBankSelect}
-        checkedChildren={config.bank}
+        checkedChildren={Banks.A}
         unCheckedChildren={Banks.B}
         defaultChecked
         className={s.custom_switch}
