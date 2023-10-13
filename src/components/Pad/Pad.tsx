@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useAppSelector } from "../../store/store";
 import { useKeyPressEvent } from "react-use";
 import {
@@ -16,6 +16,7 @@ interface Props {
 
 export function Pad({ url, color, keyBoard }: Props) {
   const playerRef = useRef<IPadState>();
+  const [state, setState] = useState(false);
 
   const config = useAppSelector((store) => store.soundEffectsReducer);
 
@@ -47,13 +48,21 @@ export function Pad({ url, color, keyBoard }: Props) {
       );
     };
   }, [config, url]);
+  function keyPress() {
+    handleClick();
+    setState((prevState) => !prevState);
+    setTimeout(() => {
+      setState((prevState) => !prevState);
+    }, 300);
+  }
 
-  useKeyPressEvent(`${keyBoard}`, handleClick);
+  useKeyPressEvent(`${keyBoard.toLowerCase()}`, keyPress);
 
   if (window.innerWidth > 1200) {
     return (
       <button
-        className={s.root}
+        className={state ? s.root_bright : s.root}
+        id={keyBoard}
         style={{ backgroundColor: color }}
         onClick={handleClick}
       />
