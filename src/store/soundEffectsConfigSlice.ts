@@ -8,6 +8,8 @@ export enum EPack {
   Memphis = "Memphis",
   Phonk = "Phonk",
   Synthwave = "Synthwave",
+  Jungle = "Jungle",
+  LoFi = "LoFi",
 }
 
 export enum ESoundEffect {

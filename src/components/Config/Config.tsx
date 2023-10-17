@@ -31,7 +31,6 @@ export function Config() {
         id={"select"}
         className={s.select}
         value={config.pack}
-        showSearch
         placeholder="Search to Select"
         onChange={handlePackSelect}
         options={Object.values(EPack).map((value) => ({
