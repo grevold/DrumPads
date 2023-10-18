@@ -6,10 +6,10 @@ import { Router } from "./Router";
 import { Config } from "./components/Config/Config";
 
 import s from "./index.module.css";
+import { Logo } from "./icons/Logo";
 
 function App() {
   const [route, setRoute] = useState<RoutePath>(RoutePath.AllowSounds);
-  console.log("render");
 
   return (
     <Router.Provider
@@ -22,6 +22,7 @@ function App() {
           <div className={s.start}>
             <span className={s.start_word}>Начать</span>
           </div>
+          <Logo className={s.logo} />
         </div>
       )}
       {route === RoutePath.Config && (

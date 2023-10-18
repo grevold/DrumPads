@@ -9,6 +9,7 @@ import {
 } from "../../store/soundEffectsConfigSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { EffectsConfigPanel } from "../EffectsConfigPanel/EffectsConfigPanel";
+import { Logo } from "../../icons/Logo";
 
 interface Props {
   isOpened: boolean;
@@ -29,7 +30,6 @@ export function Config() {
       <h1 className={s.title}>Soundbank</h1>
       <Select
         id={"select"}
-        className={s.select}
         value={config.pack}
         placeholder="Search to Select"
         onChange={handlePackSelect}
@@ -39,6 +39,7 @@ export function Config() {
         }))}
       />
       <EffectsConfigPanel />
+      <Logo className={s.logo} />
     </div>
   );
 }
