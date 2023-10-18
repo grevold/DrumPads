@@ -61,31 +61,7 @@
   font-family: "Proxima Nova";
   color: rgb(155, 155, 155);
 }
-
-/* @media (min-width: 450px) {
-  .start_shadow {
-    display: block;
-    width: 250px;
-    height: 250px;
-    border-radius: 200px;
-    font-size: 50px;
-  }
+.logo {
+  position: absolute;
+  bottom: 0;
 }
-@media (min-width: 550px) {
-  .start_shadow {
-    display: block;
-    width: 300px;
-    height: 300px;
-    border-radius: 200px;
-    font-size: 50px;
-  }
-}
-@media (min-width: 650px) {
-  .start_shadow {
-    display: block;
-    width: 350px;
-    height: 350px;
-    border-radius: 200px;
-    font-size: 50px;
-  }
-} */
