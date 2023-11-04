@@ -3,3 +3,9 @@ export enum RoutePath {
   Main = "Main",
   Config = "Config",
 }
+
+export interface IPad {
+  sample: string;
+  color: string;
+  keyBoard: string;
+}

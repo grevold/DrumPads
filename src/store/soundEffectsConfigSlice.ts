@@ -1,15 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { NormalRange, Positive, Time } from "tone/build/esm/core/type/Units";
+import { samples } from "../Texts";
 
-export enum EPack {
-  Classic_808 = "Classic_808",
-  Classic_909 = "Classic_909",
-  Dirty = "Dirty",
-  Memphis = "Memphis",
-  Phonk = "Phonk",
-  Synthwave = "Synthwave",
-  Jungle = "Jungle",
-  LoFi = "LoFi",
+export enum EInstrument {
+  // Drums = "Drums",
+  Basses = "Basses",
+  Synths = "Synths",
+  // Percussion = "Percussion",
 }
 
 export enum ESoundEffect {
@@ -40,7 +37,8 @@ export interface ISoundEffectsConfig {
       };
     };
   };
-  pack: EPack;
+  instrument: EInstrument;
+  pack: string;
   bank: Banks;
 }
 
@@ -57,7 +55,8 @@ const initialState: ISoundEffectsConfig = {
       enabled: false,
     },
   },
-  pack: EPack.Classic_808,
+  instrument: EInstrument.Basses,
+  pack: Object.keys(samples.Basses)[0],
   bank: Banks.A,
 };
 
@@ -79,7 +78,17 @@ const slice = createSlice({
         },
       };
     },
-    selectPack(store, action: PayloadAction<EPack>) {
+    selectInstrument(store, action: PayloadAction<EInstrument>) {
+      const instrument = action.payload;
+      const defaultPack = Object.keys(samples[action.payload])[0];
+
+      return {
+        ...store,
+        instrument,
+        pack: defaultPack,
+      };
+    },
+    selectPack(store, action: PayloadAction<string>) {
       return {
         ...store,
         pack: action.payload,

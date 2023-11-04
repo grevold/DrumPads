@@ -1,41 +1,57 @@
 import { Select } from "antd";
-import s from "./Config.module.css";
-
 import { useCallback } from "react";
-
 import {
-  EPack,
+  EInstrument,
   soundEffectsActions,
 } from "../../store/soundEffectsConfigSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { EffectsConfigPanel } from "../EffectsConfigPanel/EffectsConfigPanel";
 import { Logo } from "../../icons/Logo";
+import { samples } from "../../Texts";
 
-interface Props {
-  isOpened: boolean;
-}
+import s from "./Config.module.css";
 
 export function Config() {
   const dispatch = useAppDispatch();
+
+  const handleInstrumentSelect = useCallback(
+    (instrument: EInstrument) => {
+      dispatch(soundEffectsActions.selectInstrument(instrument));
+    },
+    [dispatch]
+  );
+
   const handlePackSelect = useCallback(
-    (pack: EPack) => {
+    (pack: string) => {
       dispatch(soundEffectsActions.selectPack(pack));
     },
     [dispatch]
   );
+
   const config = useAppSelector((store) => store.soundEffectsReducer);
 
   return (
     <div className={s.container}>
+      <h1 className={s.title}>Instrument</h1>
+      <Select
+        id={"select"}
+        value={config.instrument}
+        placeholder="Search to Select"
+        onChange={handleInstrumentSelect}
+        options={Object.values(EInstrument).map((value) => ({
+          value,
+          label: value,
+        }))}
+      />
       <h1 className={s.title}>Soundbank</h1>
       <Select
         id={"select"}
         value={config.pack}
         placeholder="Search to Select"
         onChange={handlePackSelect}
-        options={Object.values(EPack).map((value) => ({
-          value,
-          label: value,
+        options={Object.keys(samples[config.instrument]).map((pack) => ({
+          value: pack,
+          label: pack,
         }))}
       />
       <EffectsConfigPanel />

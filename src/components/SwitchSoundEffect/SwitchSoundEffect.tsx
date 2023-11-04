@@ -56,20 +56,6 @@ export const SwitchSoundEffect = () => {
           {"Crusher"}
         </button>
       </li>
-      {/* {Object.values(ESoundEffect).map((soundEffect) => (
-        <li key={soundEffect}>
-          <button
-            onClick={() => handleClick(soundEffect)}
-            className={
-              config.soundEffects[soundEffect].enabled
-                ? s.buttonActive
-                : s.button
-            }
-          >
-            {soundEffect}
-          </button>
-        </li>
-      ))} */}
     </ul>
   );
 };

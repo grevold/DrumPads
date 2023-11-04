@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../store/store";
+import { useAppDispatch } from "../../../../store/store";
 import {
   Banks,
   soundEffectsActions,

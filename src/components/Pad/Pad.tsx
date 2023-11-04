@@ -5,16 +5,11 @@ import {
   IPadState,
   createPlayerBySoundsEffectsConfigAndUrl,
 } from "./createPlayerBySoundsEffectsConfigAndUrl";
+import { IPad } from "../../types";
 
 import s from "./Pad.module.css";
 
-interface Props {
-  url: string;
-  color: string;
-  keyBoard: string;
-}
-
-export function Pad({ url, color, keyBoard }: Props) {
+export function Pad({ sample, color, keyBoard }: IPad) {
   const playerRef = useRef<IPadState>();
   const [state, setState] = useState(false);
 
@@ -41,13 +36,13 @@ export function Pad({ url, color, keyBoard }: Props) {
         );
       };
     }
-    playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, url);
+    playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, sample);
     return () => {
       playerRef.current?.connectedEffects.forEach((connectedEffect) =>
         connectedEffect.dispose()
       );
     };
-  }, [config, url]);
+  }, [config, sample]);
   function keyPress() {
     handleClick();
     setState((prevState) => !prevState);
