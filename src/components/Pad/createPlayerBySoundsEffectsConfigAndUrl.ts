@@ -14,11 +14,11 @@ export interface IPadState {
 }
 
 export const createPlayerBySoundsEffectsConfigAndUrl = (
-  { soundEffects, pack, bank }: ISoundEffectsConfig,
+  { soundEffects, instrument, pack, bank }: ISoundEffectsConfig,
   url: string
 ): IPadState => {
   const player = new Tone.Player(
-    `${process.env.PUBLIC_URL}/Samples/${pack}/${bank}/${url}`
+    `${process.env.PUBLIC_URL}/Samples/${instrument}/${pack}/${bank}/${url}`
   ).toDestination();
 
   const connectedEffects: IEffect[] = [];
