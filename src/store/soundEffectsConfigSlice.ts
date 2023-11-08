@@ -3,10 +3,10 @@ import { NormalRange, Positive, Time } from "tone/build/esm/core/type/Units";
 import { samples } from "../Texts";
 
 export enum EInstrument {
-  // Drums = "Drums",
+  Drums = "Drums",
   Basses = "Basses",
   Synths = "Synths",
-  // Percussion = "Percussion",
+  Percussion = "Percussion",
 }
 
 export enum ESoundEffect {
