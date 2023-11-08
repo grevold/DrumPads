@@ -438,7 +438,7 @@ export const samples: Record<
     },
   },
   Percussion: {
-    African_percussion: {
+    African_Percussion: {
       A: [
         { color: "#bd28d7", sample: "Conga1.mp3", keyBoard: "1" },
         { color: "#bd28d7", sample: "Conga2.mp3", keyBoard: "2" },
