@@ -3,11 +3,11 @@ import { useCallback } from "react";
 import {
   EInstrument,
   soundEffectsActions,
-} from "../../store/soundEffectsConfigSlice";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+} from "../../../../store/soundEffectsConfigSlice";
+import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { EffectsConfigPanel } from "../EffectsConfigPanel/EffectsConfigPanel";
-import { Logo } from "../../icons/Logo";
-import { samples } from "../../Texts";
+import { Logo } from "../../../../icons/Logo";
+import { samples } from "../../../../Texts";
 
 import s from "./Config.module.css";
 
@@ -55,7 +55,6 @@ export function Config() {
         }))}
       />
       <EffectsConfigPanel />
-      <Logo className={s.logo} />
     </div>
   );
 }

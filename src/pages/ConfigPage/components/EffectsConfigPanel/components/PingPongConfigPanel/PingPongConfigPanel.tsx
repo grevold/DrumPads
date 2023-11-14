@@ -1,10 +1,11 @@
 import { Slider } from "antd";
+import { useCallback, useMemo } from "react";
+import { useAppDispatch, useAppSelector } from "../../../../../../store/store";
 import {
   ESoundEffect,
   soundEffectsActions,
-} from "../../../../store/soundEffectsConfigSlice";
-import { useAppDispatch, useAppSelector } from "../../../../store/store";
-import { useCallback, useMemo } from "react";
+} from "../../../../../../store/soundEffectsConfigSlice";
+
 import s from "./PingPongConfigPanel.module.css";
 
 export const PingPongConfigPanel = () => {

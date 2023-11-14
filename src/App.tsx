@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { Header } from "./components/Header/Header";
-import { Main } from "./components/Main/Main";
 import { RoutePath } from "./types";
 import { Router } from "./Router";
-import { Config } from "./components/Config/Config";
-
-import s from "./index.module.css";
-import { Logo } from "./icons/Logo";
+import { AllowSoundsPage } from "./pages/AllowSoundsPage/AllowSoundsPage";
+import { MainPage } from "./pages/MainPage/MainPage";
+import { ConfigPage } from "./pages/ConfigPage/ConfigPage";
 
 function App() {
   const [route, setRoute] = useState<RoutePath>(RoutePath.AllowSounds);
@@ -17,26 +14,9 @@ function App() {
         switch: setRoute,
       }}
     >
-      {route === RoutePath.AllowSounds && (
-        <div className={s.root} onClick={() => setRoute(RoutePath.Main)}>
-          <div className={s.start}>
-            <span className={s.start_word}>Начать</span>
-          </div>
-          <Logo className={s.logo} />
-        </div>
-      )}
-      {route === RoutePath.Config && (
-        <div className={s.root}>
-          <Header onClick={() => setRoute(RoutePath.Main)} />
-          <Config />
-        </div>
-      )}
-      {route === RoutePath.Main && (
-        <div className={s.root}>
-          <Header onClick={() => setRoute(RoutePath.Config)} />
-          <Main />
-        </div>
-      )}
+      {route === RoutePath.AllowSounds && <AllowSoundsPage />}
+      {route === RoutePath.Config && <ConfigPage />}
+      {route === RoutePath.Main && <MainPage />}
     </Router.Provider>
   );
 }

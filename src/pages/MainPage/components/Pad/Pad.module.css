@@ -1,0 +1,13 @@
+.root {
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.root:active {
+  filter: brightness(2) !important;
+}
+
+.root_bright {
+  composes: root;
+  filter: brightness(2) !important;
+}

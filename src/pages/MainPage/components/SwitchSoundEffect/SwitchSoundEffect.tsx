@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import {
   ESoundEffect,
   soundEffectsActions,
-} from "../../store/soundEffectsConfigSlice";
+} from "../../../../store/soundEffectsConfigSlice";
 
 import s from "./styles.module.css";
 

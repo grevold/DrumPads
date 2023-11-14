@@ -1,0 +1,30 @@
+.logoHidden {
+  opacity: 0;
+}
+
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  margin: 0 auto;
+  background-color: rgb(35, 130, 240);
+  border: none;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.start:hover {
+  transform: scale(1.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.start_word {
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Proxima Nova";
+}
