@@ -1,22 +1,26 @@
-import { samples } from "../../Texts";
-import { useAppSelector } from "../../store/store";
+import { samples } from "../../../../Texts";
+import { useAppSelector } from "../../../../store/store";
 import { Pad } from "../Pad/Pad";
-import { SwitchSoundEffect } from "../SwitchSoundEffect/SwitchSoundEffect";
 
-import s from "./Main.module.css";
+import s from "./styles.module.css";
 
-export function Main() {
+export function Pads() {
   const config = useAppSelector((store) => store.soundEffectsReducer);
   const samplesArray = samples[config.instrument][config.pack][config.bank];
 
   return (
     <div className={s.root}>
-      <div className={s.playGround}>
+      <svg
+        className={s.svg}
+        viewBox="0 0 3 4"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      ></svg>
+      <div className={s.pads}>
         {samplesArray.map(({ color, sample, keyBoard }, index) => (
           <Pad key={index} sample={sample} color={color} keyBoard={keyBoard} />
         ))}
       </div>
-      <SwitchSoundEffect />
     </div>
   );
 }

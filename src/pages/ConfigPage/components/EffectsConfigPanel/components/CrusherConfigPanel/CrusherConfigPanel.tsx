@@ -1,11 +1,12 @@
-import s from "./CrusherConfigPanel.module.css";
 import { Slider } from "antd";
+import { useCallback } from "react";
+import { useAppDispatch, useAppSelector } from "../../../../../../store/store";
 import {
   ESoundEffect,
   soundEffectsActions,
-} from "../../../../store/soundEffectsConfigSlice";
-import { useAppDispatch, useAppSelector } from "../../../../store/store";
-import { useCallback } from "react";
+} from "../../../../../../store/soundEffectsConfigSlice";
+
+import s from "./CrusherConfigPanel.module.css";
 
 export const CrusherConfigPanel = () => {
   const params = useAppSelector(

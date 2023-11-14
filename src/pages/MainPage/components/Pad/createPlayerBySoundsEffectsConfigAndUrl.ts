@@ -2,7 +2,7 @@ import * as Tone from "tone";
 import {
   ESoundEffect,
   ISoundEffectsConfig,
-} from "../../store/soundEffectsConfigSlice";
+} from "../../../../store/soundEffectsConfigSlice";
 
 interface IEffect {
   dispose: () => void;

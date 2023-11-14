@@ -1,11 +1,11 @@
 import { useEffect, useRef, useCallback, useState } from "react";
-import { useAppSelector } from "../../store/store";
+import { useAppSelector } from "../../../../store/store";
 import { useKeyPressEvent } from "react-use";
 import {
   IPadState,
   createPlayerBySoundsEffectsConfigAndUrl,
 } from "./createPlayerBySoundsEffectsConfigAndUrl";
-import { IPad } from "../../types";
+import { IPad } from "../../../../types";
 
 import s from "./Pad.module.css";
 

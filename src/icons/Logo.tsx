@@ -17,26 +17,26 @@ export function Logo({ className }: Props) {
         fill="black"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M30 9H19V20H30V9ZM17 7V22H32V7H17Z"
         fill="black"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M30 26H19V37H30V26ZM17 24V39H32V24H17Z"
         fill="black"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M13 9H2V20H13V9ZM0 7V22H15V7H0Z"
         fill="black"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M13 26H2V37H13V26ZM0 24V39H15V24H0Z"
         fill="black"
       />
