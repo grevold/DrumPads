@@ -16,7 +16,6 @@ export function Pads() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       ></svg>
-      {/* <img src={`${process.env.PUBLIC_URL}/klerk.png`} className={s.image} /> */}
       <div className={s.pads}>
         {samplesArray.map(({ color, sample, keyBoard }, index) => (
           <Pad key={index} sample={sample} color={color} keyBoard={keyBoard} />
