@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren, ReactElement } from "react";
 import { Container } from "../Container/Container";
+import { use100vh } from "react-div-100vh";
 
 import s from "./styles.module.css";
 
@@ -15,8 +16,14 @@ export const Layout: FC<PropsWithChildren<IProps>> = ({
   footer,
   onClick,
 }) => {
+  const height = use100vh();
+
   return (
-    <div onClick={onClick} className={s.root}>
+    <div
+      onClick={onClick}
+      className={s.root}
+      style={{ minHeight: height ? `${Math.floor(height)}px` : "100vh" }}
+    >
       <header className={s.header}>
         <Container>{header}</Container>
       </header>

@@ -1,3 +1,4 @@
+import ScrollLock from "react-scrolllock";
 import { useRouteSwitcher } from "../../Router";
 import { Header } from "../../components/Header/Header";
 import { Layout } from "../../components/Layout/Layout";
@@ -13,6 +14,7 @@ export const MainPage = () => {
       header={<Header onClick={() => setRoute(RoutePath.Config)} />}
       footer={<SwitchSoundEffect />}
     >
+      <ScrollLock />
       <Pads />
     </Layout>
   );
