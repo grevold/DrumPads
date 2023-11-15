@@ -10,7 +10,11 @@ export const ConfigPage = () => {
   return (
     <Layout
       header={<Header onClick={() => setRoute(RoutePath.Main)} />}
-      footer={<Logo />}
+      footer={
+        <center>
+          <Logo />
+        </center>
+      }
     >
       <Config />
     </Layout>

@@ -1,4 +1,5 @@
 import { FC, PropsWithChildren, ReactElement } from "react";
+import { Container } from "../Container/Container";
 
 import s from "./styles.module.css";
 
@@ -16,11 +17,13 @@ export const Layout: FC<PropsWithChildren<IProps>> = ({
 }) => {
   return (
     <div onClick={onClick} className={s.root}>
-      <header className={s.header}>{header}</header>
-      <div className={s.children}>
-        <div className={s.wrap}>{children}</div>
-      </div>
-      <footer className={s.footer}>{footer}</footer>
+      <header className={s.header}>
+        <Container>{header}</Container>
+      </header>
+      <div className={s.children}>{children}</div>
+      <footer className={s.footer}>
+        <Container>{footer}</Container>
+      </footer>
     </div>
   );
 };
