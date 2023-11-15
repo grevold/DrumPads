@@ -1,8 +1,8 @@
 import { CrusherConfigPanel } from "./components/CrusherConfigPanel/CrusherConfigPanel";
 import { PingPongConfigPanel } from "./components/PingPongConfigPanel/PingPongConfigPanel";
+import { ReverbPanel } from "./components/ReverbPanel/ReverbPanel";
 
 import s from "./EffectsConfigPanel.module.css";
-import { ReverbPanel } from "./components/ReverbPanel/ReverbPanel";
 
 export const EffectsConfigPanel = () => {
   return (

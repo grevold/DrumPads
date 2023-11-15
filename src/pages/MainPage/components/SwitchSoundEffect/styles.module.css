@@ -1,15 +1,10 @@
 .root {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   list-style: none;
-  display: flex;
-  width: 100%;
-  max-width: 300px;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
 }
 
 .button {
-  width: 90px;
   height: 30px;
   border: 1px solid black;
   background-color: white;
@@ -38,79 +33,3 @@
   composes: buttonActive;
   background-color: rgb(198, 96, 12);
 }
-
-@media (min-width: 768px) {
-  .root {
-    max-width: 600px;
-  }
-  .button {
-    width: 200px;
-    height: 50px;
-  }
-}
-@media (min-width: 1200px) {
-  .root {
-    max-width: 450px;
-  }
-  .button {
-    width: 150px;
-    height: 50px;
-  }
-}
-/* @media (min-height: 480px) {
-  .root {
-    max-width: 350px;
-  }
-  .button {
-    width: 90px;
-    height: 30px;
-  }
-}
-
-@media (min-width: 450px) {
-  .root {
-    max-width: 360px;
-  }
-  .button {
-    width: 100px;
-    height: 40px;
-  }
-}
-@media (min-width: 550px) {
-  .root {
-    max-width: 420px;
-  }
-  .button {
-    width: 120px;
-    height: 40px;
-  }
-}
-@media (min-width: 650px) {
-  .root {
-    max-width: 460px;
-  }
-  .button {
-    width: 120px;
-    height: 40px;
-  }
-}
-@media (min-width: 820px) {
-  .root {
-    max-width: 720px;
-  }
-  .button {
-    width: 230px;
-    height: 50px;
-    font-size: 30px;
-  }
-}
-@media (min-width: 1024px) {
-  .root {
-    max-width: 870px;
-  }
-  .button {
-    width: 270px;
-    height: 80px;
-    font-size: 30px;
-  }
-} */

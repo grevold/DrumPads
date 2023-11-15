@@ -19,43 +19,36 @@ export const SwitchSoundEffect = () => {
   );
 
   return (
-    <ul className={s.root}>
-      <li key={"Delay"}>
-        <button
-          onClick={() => handleClick(ESoundEffect.PingPong)}
-          className={
-            config.soundEffects["Delay"].enabled
-              ? s.buttonActiveDelay
-              : s.button
-          }
-        >
-          {"Delay"}
-        </button>
-      </li>
-      <li key={"Reverb"}>
-        <button
-          onClick={() => handleClick(ESoundEffect.Reverb)}
-          className={
-            config.soundEffects["Reverb"].enabled
-              ? s.buttonActiveReverb
-              : s.button
-          }
-        >
-          {"Reverb"}
-        </button>
-      </li>
-      <li key={"Crusher"}>
-        <button
-          onClick={() => handleClick(ESoundEffect.CrusherMode)}
-          className={
-            config.soundEffects[ESoundEffect.CrusherMode].enabled
-              ? s.buttonActiveCrusher
-              : s.button
-          }
-        >
-          {"Crusher"}
-        </button>
-      </li>
-    </ul>
+    <div className={s.root}>
+      <button
+        onClick={() => handleClick(ESoundEffect.PingPong)}
+        className={
+          config.soundEffects["Delay"].enabled ? s.buttonActiveDelay : s.button
+        }
+      >
+        {"Delay"}
+      </button>
+      <button
+        onClick={() => handleClick(ESoundEffect.Reverb)}
+        className={
+          config.soundEffects["Reverb"].enabled
+            ? s.buttonActiveReverb
+            : s.button
+        }
+      >
+        {"Reverb"}
+      </button>
+
+      <button
+        onClick={() => handleClick(ESoundEffect.CrusherMode)}
+        className={
+          config.soundEffects[ESoundEffect.CrusherMode].enabled
+            ? s.buttonActiveCrusher
+            : s.button
+        }
+      >
+        {"Crusher"}
+      </button>
+    </div>
   );
 };

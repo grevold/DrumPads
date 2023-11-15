@@ -12,7 +12,11 @@ export const AllowSoundsPage = () => {
     <Layout
       onClick={() => setRoute(RoutePath.Main)}
       header={<Logo className={s.logoHidden} />}
-      footer={<Logo />}
+      footer={
+        <center>
+          <Logo />
+        </center>
+      }
     >
       <div className={s.start}>
         <span className={s.start_word}>Начать</span>
