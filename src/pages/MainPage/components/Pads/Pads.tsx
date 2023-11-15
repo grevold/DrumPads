@@ -10,17 +10,9 @@ export function Pads() {
 
   return (
     <div className={s.root}>
-      <svg
-        className={s.image}
-        viewBox="0 0 3 4"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      ></svg>
-      <div className={s.pads}>
-        {samplesArray.map(({ color, sample, keyBoard }, index) => (
-          <Pad key={index} sample={sample} color={color} keyBoard={keyBoard} />
-        ))}
-      </div>
+      {samplesArray.map(({ color, sample, keyBoard }, index) => (
+        <Pad key={index} sample={sample} color={color} keyBoard={keyBoard} />
+      ))}
     </div>
   );
 }
