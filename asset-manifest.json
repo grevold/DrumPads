@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DrumPads/static/css/main.acc98b42.css",
-    "main.js": "/DrumPads/static/js/main.84b0ef49.js",
+    "main.css": "/DrumPads/static/css/main.67d5a77a.css",
+    "main.js": "/DrumPads/static/js/main.17d6133d.js",
     "static/js/787.0217c058.chunk.js": "/DrumPads/static/js/787.0217c058.chunk.js",
     "index.html": "/DrumPads/index.html",
-    "main.acc98b42.css.map": "/DrumPads/static/css/main.acc98b42.css.map",
-    "main.84b0ef49.js.map": "/DrumPads/static/js/main.84b0ef49.js.map",
+    "main.67d5a77a.css.map": "/DrumPads/static/css/main.67d5a77a.css.map",
+    "main.17d6133d.js.map": "/DrumPads/static/js/main.17d6133d.js.map",
     "787.0217c058.chunk.js.map": "/DrumPads/static/js/787.0217c058.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.acc98b42.css",
-    "static/js/main.84b0ef49.js"
+    "static/css/main.67d5a77a.css",
+    "static/js/main.17d6133d.js"
   ]
 }
