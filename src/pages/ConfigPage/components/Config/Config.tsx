@@ -34,30 +34,33 @@ export function Config() {
     <Container className={s.root}>
       <div>
         <h1 className={s.title}>Instrument</h1>
-        <Select
+
+        <select
           className={s.select}
-          value={config.instrument}
-          placeholder="Search to Select"
-          onChange={handleInstrumentSelect}
-          options={Object.values(EInstrument).map((value) => ({
-            value,
-            label: value,
-          }))}
-        />
+          onChange={({ target }) =>
+            handleInstrumentSelect(target.value as EInstrument)
+          }
+        >
+          {Object.values(EInstrument).map((value) => (
+            <option key={value} value={value}>
+              {value}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
         <h1 className={s.title}>Soundbank</h1>
-        <Select
+        <select
           className={s.select}
-          value={config.pack}
-          placeholder="Search to Select"
-          onChange={handlePackSelect}
-          options={Object.keys(samples[config.instrument]).map((pack) => ({
-            value: pack,
-            label: pack,
-          }))}
-        />
+          onChange={({ target }) => handlePackSelect(target.value)}
+        >
+          {Object.keys(samples[config.instrument]).map((pack) => (
+            <option key={pack} value={pack}>
+              {pack}
+            </option>
+          ))}
+        </select>
       </div>
 
       <EffectsConfigPanel />
