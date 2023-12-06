@@ -8,4 +8,5 @@ export interface IPad {
   sample: string;
   color: string;
   keyBoard: string;
+  type: string;
 }

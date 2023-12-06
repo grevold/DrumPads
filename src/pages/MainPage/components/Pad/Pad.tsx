@@ -9,17 +9,27 @@ import { IPad } from "../../../../types";
 
 import s from "./Pad.module.css";
 
-export function Pad({ sample, color, keyBoard }: IPad) {
+export function Pad({ sample, color, keyBoard, type }: IPad) {
   const playerRef = useRef<IPadState>();
   const [state, setState] = useState(false);
 
   const config = useAppSelector((store) => store.soundEffectsReducer);
 
-  const handleClick = useCallback(() => {
+  const handleClickDown = useCallback(() => {
     const player = playerRef.current?.player;
     if (!player || !player.loaded) return;
     try {
       player.start();
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  const handleClickUp = useCallback(() => {
+    const player = playerRef.current?.player;
+    if (!player || !player.loaded) return;
+    try {
+      player.stop();
     } catch (error) {
       console.error(error);
     }
@@ -43,8 +53,9 @@ export function Pad({ sample, color, keyBoard }: IPad) {
       );
     };
   }, [config, sample]);
+
   function keyPress() {
-    handleClick();
+    handleClickDown();
     setState((prevState) => !prevState);
     setTimeout(() => {
       setState((prevState) => !prevState);
@@ -59,7 +70,8 @@ export function Pad({ sample, color, keyBoard }: IPad) {
         className={state ? s.root_bright : s.root}
         id={keyBoard}
         style={{ backgroundColor: color }}
-        onClick={handleClick}
+        onMouseDown={handleClickDown}
+        onMouseUp={type === "trigger" ? undefined : handleClickUp}
       />
     );
   } else {
@@ -67,7 +79,8 @@ export function Pad({ sample, color, keyBoard }: IPad) {
       <button
         className={s.root}
         style={{ backgroundColor: color }}
-        onTouchStart={handleClick}
+        onTouchStart={handleClickDown}
+        onTouchEnd={type === "trigger" ? undefined : handleClickUp}
       />
     );
   }

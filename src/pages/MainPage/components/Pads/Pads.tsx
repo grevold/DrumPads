@@ -10,8 +10,14 @@ export function Pads() {
 
   return (
     <div className={s.root}>
-      {samplesArray.map(({ color, sample, keyBoard }, index) => (
-        <Pad key={index} sample={sample} color={color} keyBoard={keyBoard} />
+      {samplesArray.map(({ color, sample, keyBoard, type }, index) => (
+        <Pad
+          key={index}
+          sample={sample}
+          color={color}
+          type={type}
+          keyBoard={keyBoard}
+        />
       ))}
     </div>
   );
