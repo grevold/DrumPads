@@ -2,9 +2,7 @@ import * as Tone from "tone";
 import {
   ESoundEffect,
   ISoundEffectsConfig,
-  soundEffectsActions,
 } from "../../../../store/soundEffectsConfigSlice";
-import { useAppDispatch } from "../../../../store/store";
 
 interface IEffect {
   dispose: () => void;
@@ -15,7 +13,7 @@ export interface IPadState {
   connectedEffects: IEffect[];
 }
 
-export const CreatePlayerBySoundsEffectsConfigAndUrl = (
+export const createPlayerBySoundsEffectsConfigAndUrl = (
   { soundEffects, instrument, pack, bank }: ISoundEffectsConfig,
   url: string
 ): IPadState => {

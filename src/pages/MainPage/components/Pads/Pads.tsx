@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { samples } from "../../../../Texts";
-import { store, useAppDispatch, useAppSelector } from "../../../../store/store";
+import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { Pad } from "../Pad/Pad";
 
 import s from "./styles.module.css";
-import { soundEffectsActions } from "../../../../store/soundEffectsConfigSlice";
 import * as Tone from "tone";
 
 export function Pads() {

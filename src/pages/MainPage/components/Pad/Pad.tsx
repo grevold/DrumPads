@@ -1,14 +1,13 @@
 import { useEffect, useRef, useCallback, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../store/store";
-import { useKeyPressEvent } from "react-use";
-import {
-  IPadState,
-  CreatePlayerBySoundsEffectsConfigAndUrl,
-} from "./CreatePlayerBySoundsEffectsConfigAndUrl";
+import { useAppSelector } from "../../../../store/store";
+
 import { IPad } from "../../../../types";
 
 import s from "./Pad.module.css";
-import { soundEffectsActions } from "../../../../store/soundEffectsConfigSlice";
+import {
+  createPlayerBySoundsEffectsConfigAndUrl,
+  IPadState,
+} from "./createPlayerBySoundsEffectsConfigAndUrl";
 
 export function Pad({ sample, color, keyBoard, type }: IPad) {
   const playerRef = useRef<IPadState>();
@@ -47,7 +46,7 @@ export function Pad({ sample, color, keyBoard, type }: IPad) {
         );
       };
     }
-    playerRef.current = CreatePlayerBySoundsEffectsConfigAndUrl(config, sample);
+    playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, sample);
 
     return () => {
       playerRef.current?.connectedEffects.forEach((connectedEffect) =>
