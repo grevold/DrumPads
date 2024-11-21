@@ -22,17 +22,17 @@ export const CrusherConfigPanel = () => {
   );
   return (
     <div className={s.root}>
-      <h3 className={s.header}>Crusher</h3>
+      <h3 className={s.header}>Vibrato</h3>
       <div style={{ height: "150px" }} className={s.regulators}>
         <div className={s.regulator}>
           <Slider
             vertical
-            value={params?.bits}
+            value={params?.depth}
             min={1}
-            max={10}
+            max={30}
             onChange={handleCrusherChange}
           />
-          <h3 className={s.option}>Bits</h3>
+          <h3 className={s.option}>Depth</h3>
         </div>
       </div>
     </div>

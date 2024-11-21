@@ -2,7 +2,9 @@ import * as Tone from "tone";
 import {
   ESoundEffect,
   ISoundEffectsConfig,
+  soundEffectsActions,
 } from "../../../../store/soundEffectsConfigSlice";
+import { useAppDispatch } from "../../../../store/store";
 
 interface IEffect {
   dispose: () => void;
@@ -13,12 +15,12 @@ export interface IPadState {
   connectedEffects: IEffect[];
 }
 
-export const createPlayerBySoundsEffectsConfigAndUrl = (
+export const CreatePlayerBySoundsEffectsConfigAndUrl = (
   { soundEffects, instrument, pack, bank }: ISoundEffectsConfig,
   url: string
 ): IPadState => {
   const player = new Tone.Player(
-    `${process.env.PUBLIC_URL}/Samples/${instrument}/${pack}/${bank}/${url}`
+    `https://storage.yandexcloud.net/fxmachine/${instrument}/${pack}/${url}`
   ).toDestination();
 
   const connectedEffects: IEffect[] = [];
@@ -42,8 +44,8 @@ export const createPlayerBySoundsEffectsConfigAndUrl = (
   }
 
   if (soundEffects[ESoundEffect.CrusherMode].enabled) {
-    const effect = new Tone.BitCrusher(
-      soundEffects[ESoundEffect.CrusherMode].params?.bits
+    const effect = new Tone.Vibrato(
+      soundEffects[ESoundEffect.CrusherMode].params?.depth
     ).toDestination();
 
     player.connect(effect);

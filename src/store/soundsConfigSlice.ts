@@ -2,7 +2,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { NormalRange, Positive, Time } from "tone/build/esm/core/type/Units";
 import { samples } from "../Texts";
 import { BaseContext, ToneOscillatorType, Unit } from "tone";
-import * as Tone from "tone";
 
 export enum EInstrument {
   Drums = "Drums",
@@ -23,7 +22,7 @@ export enum Banks {
   B = "B",
 }
 
-export interface ISoundEffectsConfig {
+export interface ISoundsConfig {
   soundEffects: {
     [ESoundEffect.PingPong]: {
       enabled: boolean;
@@ -43,10 +42,9 @@ export interface ISoundEffectsConfig {
   instrument: EInstrument;
   pack: string;
   bank: Banks;
-  sounds: any[];
 }
 
-const initialState: ISoundEffectsConfig = {
+const initialState: ISoundsConfig = {
   soundEffects: {
     [ESoundEffect.PingPong]: {
       enabled: false,
@@ -62,11 +60,10 @@ const initialState: ISoundEffectsConfig = {
   instrument: EInstrument.Drums,
   pack: Object.keys(samples.Drums)[0],
   bank: Banks.A,
-  sounds: [],
 };
 
 const slice = createSlice({
-  name: "soundEffectsConfig",
+  name: "soundsConfig",
   initialState,
   reducers: {
     clickEffect(store, action: PayloadAction<ESoundEffect>) {
@@ -165,14 +162,8 @@ const slice = createSlice({
         },
       };
     },
-    addSounds(store, action: PayloadAction<any[]>) {
-      return {
-        ...store,
-        sounds: action.payload,
-      };
-    },
   },
 });
 
-export const soundEffectsActions = slice.actions;
-export const soundEffectsReducer = slice.reducer;
+export const soundsActions = slice.actions;
+export const soundsReducer = slice.reducer;
