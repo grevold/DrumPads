@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
 import { soundEffectsReducer } from "./soundEffectsConfigSlice";
+import { soundsReducer } from "./soundsConfigSlice";
 
 export const store = configureStore({
   reducer: {

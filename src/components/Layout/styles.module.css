@@ -1,4 +1,6 @@
 .root {
+  width: 100%;
+  overflow: hidden;
   display: grid;
   grid-template-rows: min-content auto min-content;
 }

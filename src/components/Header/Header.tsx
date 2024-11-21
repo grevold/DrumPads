@@ -20,7 +20,7 @@ export function Header({ onClick }: IProps) {
   return (
     <div className={s.root}>
       <h1 className={s.header}>{nameOfPack}</h1>
-      <SwitchBanks />
+      {/* <SwitchBanks /> */}
       <button onClick={handleClick} className={s.button_burger}>
         <Burger isOpened={isOpened} />
       </button>

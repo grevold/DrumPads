@@ -47,7 +47,7 @@ export const SwitchSoundEffect = () => {
             : s.button
         }
       >
-        {"Crusher"}
+        {"Vibrato"}
       </button>
     </div>
   );

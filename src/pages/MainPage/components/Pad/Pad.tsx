@@ -1,13 +1,14 @@
 import { useEffect, useRef, useCallback, useState } from "react";
-import { useAppSelector } from "../../../../store/store";
+import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useKeyPressEvent } from "react-use";
 import {
   IPadState,
-  createPlayerBySoundsEffectsConfigAndUrl,
-} from "./createPlayerBySoundsEffectsConfigAndUrl";
+  CreatePlayerBySoundsEffectsConfigAndUrl,
+} from "./CreatePlayerBySoundsEffectsConfigAndUrl";
 import { IPad } from "../../../../types";
 
 import s from "./Pad.module.css";
+import { soundEffectsActions } from "../../../../store/soundEffectsConfigSlice";
 
 export function Pad({ sample, color, keyBoard, type }: IPad) {
   const playerRef = useRef<IPadState>();
@@ -46,23 +47,14 @@ export function Pad({ sample, color, keyBoard, type }: IPad) {
         );
       };
     }
-    playerRef.current = createPlayerBySoundsEffectsConfigAndUrl(config, sample);
+    playerRef.current = CreatePlayerBySoundsEffectsConfigAndUrl(config, sample);
+
     return () => {
       playerRef.current?.connectedEffects.forEach((connectedEffect) =>
         connectedEffect.dispose()
       );
     };
   }, [config, sample]);
-
-  function keyPress() {
-    handleClickDown();
-    setState((prevState) => !prevState);
-    setTimeout(() => {
-      setState((prevState) => !prevState);
-    }, 300);
-  }
-
-  useKeyPressEvent(`${keyBoard.toLowerCase()}`, keyPress);
 
   if (window.innerWidth > 1200) {
     return (
